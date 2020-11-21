@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Here are Your Picks</title>
+</head>
+<body>
+    <h1>Here Are Your Picks As Of: <%= time %></h1>
+    <a href="/">Go Back Home</a>
+      
+    <ul>
+        <% picks.forEach(function(pick, idx) { %>
+            <li>
+                <form class="delete-form" action="/picks/<%= idx %>?_method=DELETE" method="POST">
+                    <button type="submit">X</button>
+                </form>
+
+                <a href="/picks/<%= idx %>">
+                    <%= pick.text %>
+                </a>
+            </li>
+        <% }) %>
+    </ul>
+    
+    <a href="/picks/new">Add New Pick</a>
+
+</body>
+</html>
