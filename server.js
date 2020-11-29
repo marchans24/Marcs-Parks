@@ -1,49 +1,53 @@
-// require our modules and set up our setting variables
 const express = require('express');
-const port = 3009;
-const methodOverride = require('method-override');
-const session = require('express-session');
 const morgan = require('morgan');
+const session = require('express-session');
+const passport = require('passport');
+const port = process.env.PORT || 3000;
 
 // We'll need to load the env vars
 require('dotenv').config();
 
-// require our routes
-const indexRouter = require('./routes/index');
-const picksRouter = require('./routes/picks');
-
-
-// create the express app
+// create the Express app
 const app = express();
 
 // connect to the MongoDB with mongoose
 require('./config/database');
+require('./config/passport');
 
-// configure server settings app.set()
+// require our routes
+var indexRouter = require('./routes/index');
+var moviesRouter = require('./routes/movies');
+var reviewsRouter = require('./routes/reviews');
+var performersRouter = require('./routes/performers');
+
+// view engine setup
 app.set('view engine', 'ejs');
 
-// mount our middleware app.use()
-app.use(methodOverride('_method'));
+app.use(express.static('public'));
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
+// TODO Add session middleware here
 
-// own custom middleware
-app.use(function(req, res, next) {
-    console.log('Hello Guest Picker!');
-    req.time = new Date().toLocaleTimeString();
-    next();
-});
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true
+}));
 
-// mount our routes app.use()
-// define another call to app.use() mounting a router for the homepage
+// TODO Add passport middleware here
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/', indexRouter);
-app.use('/picks', picksRouter);
+app.use('/movies', moviesRouter);
+app.use('/', reviewsRouter);
+app.use('/', performersRouter);
 
-// tell the app to listen on designated port
-app.listen(port, function() {
-    console.log(`Express is listening on port:${port}`)
+
+
+app.listen(port, () => {
+  console.log(`Express is listening on port:${port}`);
 });
 
 

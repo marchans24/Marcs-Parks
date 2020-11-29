@@ -1,17 +1,8 @@
-// require our modules
-const express = require('express');
+var express = require('express');
+var router = express.Router();
 
-// create a router object
-const router = express.Router();
+router.get('/', function(req, res, next) {
+  res.redirect('/movies');
+});
 
-// require the controller module
-const indexCtrl = require('../controllers/index');
-
-// define our routes
-
-
-// everythign after localhost
-router.get('/', indexCtrl.index);
-
-// export the router object
 module.exports = router;
