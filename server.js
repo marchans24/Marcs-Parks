@@ -49,7 +49,7 @@ app.use('/', performersRouter);
 
 
 app.listen(port, () => {
-  console.log(`Express is listening on port:${port}`);
+  console.log(`Express listening on port:${port}`);
 });
 
 
