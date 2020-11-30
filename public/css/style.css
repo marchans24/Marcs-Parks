@@ -1,7 +1,13 @@
 * {
     box-sizing: border-box;
-    font-family: Helvetica;
-    color: #424748;
+    font-family: cursive;
+    color: black;
+  }
+
+  main {
+    background-image: url('../images/dollar.jpg');
+    background-size: cover;
+    background-position: center;
   }
   
   body {
@@ -72,6 +78,10 @@
     padding: 5px;
     border-radius: 5px;
   }
+
+  .delete-form button {
+    color: red;
+}
   
   #new-form input[type="submit"] {
     grid-column: span 2;
@@ -143,6 +153,7 @@
     font-weight: bold;
   }
 
-  .delete-form button {
-    color: red;
-}
+ 
+  
+  
+  

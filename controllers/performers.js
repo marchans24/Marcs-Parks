@@ -31,7 +31,8 @@ function newPerformer(req, res) {
   Performer.find({}, function (err, performers) {
     res.render('performers/new', {
       title: 'Add Shark',
-      performers
+      performers,
+      user: req.user
     });
   })
 }

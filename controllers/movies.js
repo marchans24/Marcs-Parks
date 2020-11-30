@@ -5,12 +5,13 @@ module.exports = {
   index,
   show,
   new: newMovie,
-  create
+  create,
+  delMovie
 };
 
 function index(req, res) {
   Movie.find({}, function(err, movies) {
-    res.render('movies/index', { title: 'All Picks', movies });
+    res.render('movies/index', { title: 'All Picks', movies, user: req.user });
   });
 }
 
@@ -22,14 +23,18 @@ function show(req, res) {
     .exec(function(err, performers) {
       console.log(performers);
       res.render('movies/show', {
-        title: 'Pick Details', movie, performers
+        title: 'Pick Details', movie, performers, user: req.user
       });
     });
   });
 }
 
+function delMovie(req, res) {
+
+}
+
 function newMovie(req, res) {
-  res.render('movies/new', { title: 'Add New Pick' });
+  res.render('movies/new', { title: 'Add New Pick', user: req.user });
 }
 
 function create(req, res) {

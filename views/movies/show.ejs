@@ -1,5 +1,13 @@
 <%- include('../partials/header') %>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
 <section id="show-page">
   <div>Team: </div>
   <div><%= movie.title %></div>
@@ -19,6 +27,7 @@
   <select name="performerId">
     <%- performers.map(p => `<option value="${p._id}">${p.name}</option>`).join('') %>
   </select>
+</form>
   <button type="submit">Add Shark</button>
 </form>
 
