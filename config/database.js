@@ -15,4 +15,3 @@ db.on('connected', function() {
 db.on('error', function(error) {
   console.log(`Encountered an error: ${error.message}`);
 });
-

@@ -4,6 +4,7 @@ const session = require('express-session');
 const passport = require('passport');
 const port = process.env.PORT || 3000;
 const bodyParser = require("body-parser");
+const methodOverride = require('method-override');
 
 // We'll need to load the env vars
 require('dotenv').config();
@@ -29,6 +30,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 // TODO Add session middleware here
 
 app.use(session({

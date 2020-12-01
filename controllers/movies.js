@@ -6,7 +6,7 @@ module.exports = {
   show,
   new: newMovie,
   create,
-  delMovie
+  delete: deleteMovie
 };
 
 function index(req, res) {
@@ -29,8 +29,10 @@ function show(req, res) {
   });
 }
 
-function delMovie(req, res) {
-
+function deleteMovie(req, res) {
+  Movie.findByIdAndRemove(req.params.id, function(err, movie) {
+    res.redirect('/');
+  });
 }
 
 function newMovie(req, res) {
