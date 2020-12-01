@@ -10,10 +10,10 @@ Wireframe:
 ![Wireframe](./public/images/wireframeMarc.png)
 
 Screenshots:
+![Application](./public/images/application.png)
 
 
-
-Technologies Used: HTML, CSS, JavaScript, jQuery, Express, Express Middleware, Node, Mongoose, Heroku, MongoDB, Oauth
+Technologies Used: HTML, CSS, JavaScript, Express, Express Middleware, Node, Mongoose, Heroku, MongoDB, Oauth
 
 Application Link:
 https://marcs-parks.herokuapp.com/
