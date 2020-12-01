@@ -1,11 +1,11 @@
 * {
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
-    color: black;
+    color: gold;
   }
 
   main {
-    background-image: url('../images/dollar.jpg');
+    background-image: url('../images/ballpark.jpg');
     background-size: cover;
     background-position: center;
   }
@@ -20,9 +20,14 @@
       "main"
   }
 
-  footer {
-    background-image: url('../images/dollar.jpg');
+  header{
+    background-image: url('../images/money.jpg');
   }
+
+  footer{
+    text-align: center;
+  }
+
   
   body > nav {
     grid-area: nav;
@@ -44,7 +49,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #E8ECEB;
+    background-color: #B8C0C2;
     padding: 20px;
     overflow-y: scroll;
   }
@@ -127,6 +132,10 @@
     display: grid;
     grid-template-columns: auto auto;
     grid-gap: 1rem;
+  }
+
+  footer {
+    text-align: center;
   }
   
   #show-page div:nth-child(even) {
