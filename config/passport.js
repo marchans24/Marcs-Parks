@@ -8,7 +8,7 @@ passport.use(new GoogleStrategy({
     callbackURL: process.env.GOOGLE_CALLBACK
 }, function(accessToken, refreshToken, profile, cb) {
     console.log(profile)
-    // a student has logged in to Google
+    // a user has logged in to Google
     Pick.findOne({ 'googleId': profile.id }, function(err, pick) {
         if(err) return cb(err);
         if(pick) {
