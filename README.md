@@ -7,7 +7,7 @@ Users are able to login with Google and pick their best sports bets. Users are a
 
 
 Wireframe:
-![Wireframe](https://github.com/marchans24/marcs-parks/blob/master/public/images/wireframeMarc.png)
+![Wireframe](relative/path/to/wireframeMarc.png?raw=true "Wireframe")
 
 Screenshots:
 
