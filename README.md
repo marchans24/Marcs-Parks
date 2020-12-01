@@ -1,13 +1,13 @@
 <h1>
 Application Title:
-Marc's Out of the Parks?
+Marc's Out of the Parks!
 </h1>
 
 Users are able to login with Google and pick their best sports bets. Users are able to add notes, sharks, and confidence levels to their picks. 
 
 
 Wireframe:
-
+![Wireframe]('../images/money.jpg')
 Screenshots:
 
 
