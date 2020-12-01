@@ -10,9 +10,11 @@ var reviewSchema = new Schema({
 });
 
 var movieSchema = new Schema({
+  picker: {
+    type: String
+  },
   title: {
     type: String,
-    googleId: String,
     //required: true
   },
   releaseYear: {

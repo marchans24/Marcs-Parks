@@ -9,6 +9,7 @@
 <table id="list">
   <thead>
     <tr>
+      <th>Picker</th>
       <th>Team</th>
       <th>Spread</th>
       <th>Detials</th>
@@ -18,6 +19,7 @@
   <tbody>
     <% movies.forEach(function(m) { %>
       <tr>
+        <td><%= m.picker %></td>
         <td><%= m.title %></td>
         <td><%= m.releaseYear %></td>
         <td><a href="/movies/<%= m._id %>">PICK DETAILS</a></td>
