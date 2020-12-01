@@ -18,7 +18,7 @@ require('./config/passport');
 
 // require our routes
 var indexRouter = require('./routes/index');
-var moviesRouter = require('./routes/movies');
+var picksRouter = require('./routes/picks');
 var reviewsRouter = require('./routes/reviews');
 var performersRouter = require('./routes/performers');
 
@@ -44,7 +44,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', indexRouter);
-app.use('/movies', moviesRouter);
+app.use('/picks', picksRouter);
 app.use('/', reviewsRouter);
 app.use('/', performersRouter);
 

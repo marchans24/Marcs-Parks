@@ -1,14 +1,14 @@
-var Movie = require('../models/movie');
+var Pick = require('../models/pick');
 
 module.exports = {
   create
 };
 
 function create(req, res) {
-  Movie.findById(req.params.id, function(err, movie) {
-    movie.reviews.push(req.body);
-    movie.save(function(err) {
-      res.redirect(`/movies/${movie._id}`);
+  Pick.findById(req.params.id, function(err, pick) {
+    pick.reviews.push(req.body);
+    pick.save(function(err) {
+      res.redirect(`/picks/${pick._id}`);
     });
   });
 }

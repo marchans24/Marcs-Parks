@@ -17,13 +17,13 @@
     </tr>
   </thead>
   <tbody>
-    <% movies.forEach(function(m) { %>
+    <% picks.forEach(function(p) { %>
       <tr>
-        <td><%= m.picker %></td>
-        <td><%= m.title %></td>
-        <td><%= m.releaseYear %></td>
-        <td><a href="/movies/<%= m._id %>">PICK DETAILS</a></td>
-        <td><form class="delete-form" action="/movies/<%= m._id %>?_method=DELETE" method="POST">
+        <td><%= p.picker %></td>
+        <td><%= p.title %></td>
+        <td><%= p.releaseYear %></td>
+        <td><a href="/picks/<%= p._id %>">PICK DETAILS</a></td>
+        <td><form class="delete-form" action="/picks/<%= p._id %>?_method=DELETE" method="POST">
           <button type="submit">X</button>
       </form></td>
       </tr>

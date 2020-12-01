@@ -10,22 +10,22 @@
 
 <section id="show-page">
   <div>Picker: </div>
-  <div><%= movie.picker %></div>
+  <div><%= pick.picker %></div>
   <div>Team: </div>
-  <div><%= movie.title %></div>
+  <div><%= pick.title %></div>
   <div>Spread: </div>
-  <div><%= movie.releaseYear %></div>
+  <div><%= pick.releaseYear %></div>
   <div>Lock of the Week: </div>
-  <div><%= movie.nowShowing ? 'Yes' : 'No' %></div>
+  <div><%= pick.nowShowing ? 'Yes' : 'No' %></div>
   <div>Sharks:</div>
   <ul>
-    <%- movie.cast.map(p => 
+    <%- pick.cast.map(p => 
       `<li>${p.name} <small>${p.born.toLocaleDateString()}</small></li>`
     ).join('') %>
   </ul>
 </section>
 
-<form id="add-per-to-cast" action="/movies/<%= movie._id%>/performers" method="POST">
+<form id="add-per-to-cast" action="/picks/<%= pick._id%>/performers" method="POST">
   <select name="performerId">
     <%- performers.map(p => `<option value="${p._id}">${p.name}</option>`).join('') %>
   </select>
@@ -35,7 +35,7 @@
 
 <br><br><h2>Break Down</h2>
 <form id="add-review-form" method="POST"
-  action="/movies/<%= movie._id %>/reviews">
+  action="/picks/<%= pick._id %>/reviews">
   <label>Break Down:</label>
   <textarea name="content"></textarea>
   <label>Confidence:</label>
@@ -49,7 +49,7 @@
   <input type="submit" value="Add Break Down">
 </form>
 
-<% if (movie.reviews.length) { %>
+<% if (pick.reviews.length) { %>
   <table>
     <thead>
       <tr>
@@ -60,7 +60,7 @@
     </thead>
     <tbody>
       <% var total = 0 %>
-      <% movie.reviews.forEach(function(r) { %>
+      <% pick.reviews.forEach(function(r) { %>
         <% total += r.rating %>
         <tr>
           <td><%= r.createdAt.toLocaleDateString() %></td>
@@ -70,7 +70,7 @@
         <% }); %>
         <tr>
           <td colspan="2"></td>
-          <td><strong><%= (total / movie.reviews.length).toFixed(1) %></strong></td>
+          <td><strong><%= (total / pick.reviews.length).toFixed(1) %></strong></td>
         </tr>
     </tbody>
   </table>

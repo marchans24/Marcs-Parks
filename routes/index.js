@@ -10,7 +10,7 @@ router.get('/auth/google', passport.authenticate('google', {
 // this route is for when google finishes validating user credentials
 // they will use this route to bring the user back to us
 router.get('/oauth2callback', passport.authenticate('google', {
-  successRedirect: '/movies',
+  successRedirect: '/picks',
   failureRedirect: '/'
 }));
 
@@ -21,7 +21,7 @@ router.get('/logout', function(req, res) {
 });
 
 router.get('/', function(req, res, next) {
-  res.redirect('/movies');
+  res.redirect('/picks');
 });
 
 module.exports = router;

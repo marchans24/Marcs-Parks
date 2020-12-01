@@ -1,5 +1,5 @@
 const passport = require('passport');
-const Movie = require('../models/movie');
+const Pick = require('../models/pick');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 passport.use(new GoogleStrategy({
@@ -9,33 +9,33 @@ passport.use(new GoogleStrategy({
 }, function(accessToken, refreshToken, profile, cb) {
     console.log(profile)
     // a student has logged in to Google
-    Movie.findOne({ 'googleId': profile.id }, function(err, movie) {
+    Pick.findOne({ 'googleId': profile.id }, function(err, pick) {
         if(err) return cb(err);
-        if(movie) {
-            return cb(null, movie) // user will be added to session (logged in to our app)
+        if(pick) {
+            return cb(null, pick) // user will be added to session (logged in to our app)
         } else {
-            const newMovie = new Movie({
+            const newPick = new Pick({
                 name: profile.displayName,
                 email: profile.emails[0].value,
                 googleId: profile.id
             });
 
-            newMovie.save(function(err) {
+            newPick.save(function(err) {
                 if(err) return cb(err);
-                return cb(null, movie);
+                return cb(null, pick);
             });
         }
     });
 }));
 
 
-passport.serializeUser(function(movie, done) {
-    done(null, movie.id);
+passport.serializeUser(function(pick, done) {
+    done(null, pick.id);
 });
 
 
 passport.deserializeUser(function(id, done) {
-    Movie.findById(id, function(err, movie) {
-        done(err, movie)
+    Pick.findById(id, function(err, pick) {
+        done(err, pick)
     });
 });

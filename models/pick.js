@@ -9,7 +9,7 @@ var reviewSchema = new Schema({
   timestamps: true
 });
 
-var movieSchema = new Schema({
+var pickSchema = new Schema({
   picker: {
     type: String
   },
@@ -30,4 +30,4 @@ var movieSchema = new Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model('Movie', movieSchema);
+module.exports = mongoose.model('Pick', pickSchema);
