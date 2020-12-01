@@ -9,13 +9,17 @@ var reviewSchema = new Schema({
   timestamps: true
 });
 
+
 var pickSchema = new Schema({
   picker: {
     type: String
   },
   title: {
     type: String,
-    //required: true
+  },
+  createdBy: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   },
   releaseYear: {
     type: Number,
@@ -29,5 +33,6 @@ var pickSchema = new Schema({
 }, {
   timestamps: true
 });
+
 
 module.exports = mongoose.model('Pick', pickSchema);

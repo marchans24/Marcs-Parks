@@ -1,5 +1,5 @@
 const passport = require('passport');
-const Pick = require('../models/pick');
+const User = require('../models/user');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 passport.use(new GoogleStrategy({
@@ -9,33 +9,33 @@ passport.use(new GoogleStrategy({
 }, function(accessToken, refreshToken, profile, cb) {
     console.log(profile)
     // a user has logged in to Google
-    Pick.findOne({ 'googleId': profile.id }, function(err, pick) {
+    User.findOne({ 'googleId': profile.id }, function(err, foundUser) {
         if(err) return cb(err);
-        if(pick) {
-            return cb(null, pick) // user will be added to session (logged in to our app)
+        if(foundUser) {
+            return cb(null, foundUser) // user will be added to session (logged in to our app)
         } else {
-            const newPick = new Pick({
+            const newUser = new User({
                 name: profile.displayName,
                 email: profile.emails[0].value,
                 googleId: profile.id
             });
 
-            newPick.save(function(err) {
+            newUser.save(function(err) {
                 if(err) return cb(err);
-                return cb(null, pick);
+                return cb(null, newUser);
             });
         }
     });
 }));
 
 
-passport.serializeUser(function(pick, done) {
-    done(null, pick.id);
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
 });
 
 
 passport.deserializeUser(function(id, done) {
-    Pick.findById(id, function(err, pick) {
-        done(err, pick)
+    User.findById(id, function(err, user) {
+        done(err, user)
     });
 });
