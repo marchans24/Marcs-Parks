@@ -9,7 +9,7 @@ passport.use(new GoogleStrategy({
 }, function(accessToken, refreshToken, profile, cb) {
     console.log(profile)
     // a student has logged in to Google
-    Movie.findOne({ googleId: profile.id }, function(err, movie) {
+    Movie.findOne({ 'googleId': profile.id }, function(err, movie) {
         if(err) return cb(err);
         if(movie) {
             return cb(null, movie) // user will be added to session (logged in to our app)
