@@ -39,7 +39,6 @@ function newPick(req, res) {
 }
 
 function create(req, res) {
-  req.body.createdBy = req.user._id;
   req.body.nowShowing = !!req.body.nowShowing;
   for (let key in req.body) {
     if (req.body[key] === '') delete req.body[key];
